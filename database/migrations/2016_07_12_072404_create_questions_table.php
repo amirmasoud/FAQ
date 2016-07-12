@@ -20,7 +20,7 @@ class CreateQuestionsTable extends Migration
             $table->foreign('user_id')
                   ->references('id')->on('users')
                   ->onDelete('cascade');
-            $table->unsignedInteger('answer')->default(0);
+            $table->unsignedInteger('answer')->nullable();
             $table->foreign('answer')
                   ->references('id')->on('questions')
                   ->onDelete('cascade');
