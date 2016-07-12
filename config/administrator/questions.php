@@ -9,22 +9,17 @@ return array(
 	 * The display columns
 	 */
 	'columns' => array(
-		'full' => array(
-			'title' 	=> 'Standard Resolution',
-			'output' 	=> function($thumbnail) {
-				if ($thumbnail != '')
-					return '<img src="' . $thumbnail . '" alt="no thumbnail" />';
-				},
-			'sortable' => false,
+		'title' => array(
+			'title' => 'Title',
 		),
-		'caption_text' => array(
-			'title' => 'Caption Text',
-		),
-		'created_time' => array(
-			'title' 		=> 'Created time',
+		'text' => array(
+			'title' 		=> 'Text',
 		),
 		'id' =>  array(
 			'title' => 'ID'
+		),
+		'answer' =>  array(
+			'title' => 'answer'
 		),
 	),
 
@@ -33,29 +28,14 @@ return array(
 	 */
 	'edit_fields' => array(
 		'id',
-		'caption_text' => array(
-		    'title' => 'Caption Text',
-		    'type' 	=> 'wysiwyg',
+		'title' => array(
+		    'title' => 'Title',
+		    'type' 	=> 'text',
 		),
-		'state' => array(
-		    'type' => 'enum',
-		    'title' => 'State',
-		    'options' => array(
-		        'new' 	=> 'New',
-		        'hide' 	=> 'Hide',
-		        'show' 	=> 'Show',
-		    ),
+		'text' => array(
+		    'type' => 'textarea',
+		    'title' => 'Text',
 		),
-		'link' => array(
-			'title' => 'Link',
-			'type' 	=> 'text',
-			'limit' => 255,
-		),
-		'category' => array(
-		    'type' => 'relationship',
-		    'title' => 'Category',
-		    'name_field' => 'name',
-		)
 	),
 
 	/**
@@ -64,21 +44,11 @@ return array(
 	 * @type array
 	 */
 	'filters' => array(
-	    'caption_text' => array(
-	        'title' => 'Caption Text',
-	    ),
-	    'state' => array(
-	        'title' => 'State',
-	        'type' 	=> 'enum',
-		    'options' => array(
-		        'new' 	=> 'New',
-		        'hide' 	=> 'Hide',
-		        'show' 	=> 'Show',
-		    ),
+	    'title' => array(
+	        'title' => 'Title',
 	    ),
 	    'created_time' => array(
-	        'title' 	 => 'Created Time',
-	        'type' 		 => 'datetime',
+	        'title' => 'Text',
 	    ),
 	),
 	'form_width' => 600
