@@ -9,25 +9,31 @@ use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class SendQuestion extends Job implements ShouldQueue
+class SendAnswer extends Job implements ShouldQueue
 {
     use InteractsWithQueue, SerializesModels;
 
     /**
-     * Question form request
+     * Answeer request.
      * 
      * @var Request
      */
     protected $request;
 
     /**
+     * Reply id.
+     */
+    protected $id;
+
+    /**
      * Create a new job instance.
      *
      * @return void
      */
-    public function __construct($request)
+    public function __construct($request, $id)
     {
         $this->request = $request;
+        $this->id      = $id;
     }
 
     /**
@@ -39,7 +45,7 @@ class SendQuestion extends Job implements ShouldQueue
     {
         $user_id = Auth::user()->id;
         $this->request['user_id'] = $user_id;
-        dd($this->request);
+        $this->request['answer'] = $this->id;
         $question = new Question($this->request);
         $question->save();
     }

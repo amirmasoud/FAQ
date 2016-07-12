@@ -20,3 +20,5 @@ Route::auth();
 Route::get('/home', 'HomeController@index');
 Route::post('/questions', 'QuestionController@store');
 Route::get('/questions', ['uses' => 'QuestionController@index', 'as' => 'questions.index']);
+Route::get('/questions/{id}/reply', ['uses' => 'QuestionController@reply', 'as' => 'questions.reply']);
+Route::post('/questions/{id}/reply', ['uses' => 'QuestionController@replyStore', 'as' => 'questions.replyStore']);
