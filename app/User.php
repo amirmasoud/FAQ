@@ -23,4 +23,13 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+
+    /**
+     * A user can have many question.
+     */
+    public function questions()
+    {
+        return $this->belongsToMany('App\Question');
+    }
 }

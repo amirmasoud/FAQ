@@ -2,6 +2,7 @@
 
 namespace App\Jobs;
 
+use Auth;
 use App\Jobs\Job;
 use App\Question;
 use Illuminate\Queue\SerializesModels;
@@ -36,6 +37,9 @@ class SendQuestion extends Job implements ShouldQueue
      */
     public function handle()
     {
-        Question::create($this->request);
+        $user_id = Auth::user()->id;
+        $this->request['user_id'] = $user_id;
+        $question = new Question($this->request);
+        $question->save();
     }
 }

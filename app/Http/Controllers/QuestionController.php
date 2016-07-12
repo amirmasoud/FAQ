@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Flash;
 use App\Question;
 use App\Http\Requests;
 use App\Jobs\SendQuestion;
@@ -12,7 +13,13 @@ class QuestionController extends Controller
 {
     public function index()
     {
-    	return Question::simplePaginate();
+    	$questions = Question::orderby('id', 'desc')->simplePaginate();
+        return view('questions.index', compact('questions'));
+    }
+
+    public function form()
+    {
+        return view('question.form');
     }
 
     public function store(QuestionRequest $request)
@@ -23,6 +30,6 @@ class QuestionController extends Controller
 
         Flash::success('Your question has been published.');
 
-        return redirect()->route('questions');
+        return redirect()->route('questions.index');
     }
 }

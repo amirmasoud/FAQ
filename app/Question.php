@@ -14,6 +14,8 @@ class Question extends Model
 	protected $fillable = [
 		'title',
         'text',
+        'user_id',
+        'answer'
 	];
 
 	/**
